@@ -1,3 +1,5 @@
+package findshortestpath;
+
 public class Stack {
 
     private final int maxSize = 100;//Размер массива

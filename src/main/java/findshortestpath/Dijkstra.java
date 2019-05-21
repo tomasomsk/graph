@@ -1,3 +1,5 @@
+package findshortestpath;
+
 import java.util.*;
 
 class Dijkstra {
@@ -68,23 +70,23 @@ class Dijkstra {
 
 
     private Map<String, Integer> getCostsOfNodesAfterStartNode(Integer[][] graphMatrix, List<Vertex> vertexList) {
-        return getCostsOfNodesAfterNode(vertexList.get(0).getLabel(), graphMatrix, vertexList);
+        return getCostsOfNodesAfterNode(vertexList.get(0).getStringLabel(), graphMatrix, vertexList);
     }
 
     private Map<String, Integer> getCostsOfNodesAfterNode(String node, Integer[][] graphMatrix, List<Vertex> vertexList) {
         Map<String, Integer> costs = new HashMap<>();
         costs.put(node, 0);
         for (int i = 0; i < graphMatrix.length; i++) {
-            if (node.equals(vertexList.get(i).getLabel())) {
+            if (node.equals(vertexList.get(i).getStringLabel())) {
                 for (int k = i; k < graphMatrix.length; k++) {
                     for (int j = 0; j < graphMatrix.length; j++) {
                         if (k == i && graphMatrix[k][j] != 0) {
-                            costs.put(vertexList.get(j).getLabel(), graphMatrix[k][j]);
+                            costs.put(vertexList.get(j).getStringLabel(), graphMatrix[k][j]);
                         } else if (graphMatrix[k][j] != 0 && !vertexList.get(j).isVisited()) {
-                            costs.putIfAbsent(vertexList.get(j).getLabel(), Integer.MAX_VALUE);
+                            costs.putIfAbsent(vertexList.get(j).getStringLabel(), Integer.MAX_VALUE);
                         }
                     }
-                    if (costs.get(vertexList.get(k).getLabel()) != null) {
+                    if (costs.get(vertexList.get(k).getStringLabel()) != null) {
                         vertexList.get(k).setVisited(true);
                     }
                 }
@@ -95,17 +97,17 @@ class Dijkstra {
     }
 
     private Map<String, String> getParentsOfNodesAfterStartNode(Integer[][] graphMatrix, List<Vertex> vertexList) {
-        return getParentsOfNodesAfterNode(vertexList.get(0).getLabel(), graphMatrix, vertexList);
+        return getParentsOfNodesAfterNode(vertexList.get(0).getStringLabel(), graphMatrix, vertexList);
     }
 
     private Map<String, String> getParentsOfNodesAfterNode(String node, Integer[][] graphMatrix, List<Vertex> vertexList) {
         Map<String, String> parents = new HashMap<>();
         for (int i = 0; i < graphMatrix.length; i++) {
-            if (node.equals(vertexList.get(i).getLabel())) {
+            if (node.equals(vertexList.get(i).getStringLabel())) {
                 for (int k = i; k < graphMatrix.length; k++) {
                     for (int j = 0; j < graphMatrix.length; j++) {
                         if (k == i && graphMatrix[k][j] != 0) {
-                            parents.putIfAbsent(vertexList.get(j).getLabel(), vertexList.get(k).getLabel());
+                            parents.putIfAbsent(vertexList.get(j).getStringLabel(), vertexList.get(k).getStringLabel());
                         }
                     }
                 }

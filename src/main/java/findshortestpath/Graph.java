@@ -1,3 +1,5 @@
+package findshortestpath;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,10 +51,10 @@ public class Graph {
     public Map<String, Integer> getNeighbors(String vertexLabel) {
         Map<String, Integer> result = new HashMap<>();
         for (int i = 0; i < matrix.length; i++) {
-            if (vertexLabel.equals(vertexList.get(i).getLabel())) {
+            if (vertexLabel.equals(vertexList.get(i).getStringLabel())) {
                 for (int j = 0; j < matrix.length; j++) {
                     if (matrix[i][j] != 0) {
-                        result.put(vertexList.get(j).getLabel(), matrix[i][j]);
+                        result.put(vertexList.get(j).getStringLabel(), matrix[i][j]);
                     }
                 }
             }
@@ -64,7 +66,7 @@ public class Graph {
         Map<String, Integer> result = new HashMap<>();
         for (int j = 0; j < matrix.length; j++) {
             if (matrix[vertexNumber][j] != 0) {
-                result.put(vertexList.get(j).getLabel(), matrix[vertexNumber][j]);
+                result.put(vertexList.get(j).getStringLabel(), matrix[vertexNumber][j]);
             }
         }
         return result;

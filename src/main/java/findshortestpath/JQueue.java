@@ -1,3 +1,5 @@
+package findshortestpath;
+
 public class JQueue {
 
     private int[] array;//массив для хранения элементов
